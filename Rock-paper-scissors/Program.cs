@@ -13,13 +13,14 @@ namespace ROCKPAPERSCISSORS
         {
             string inputPlayer, inputCPU;
             int randomInt;
-            int scorePlayer = 0;
-            int scoreCPU = 0;
+           
             bool playAgain = true;
 
 
             while (playAgain)
             {
+                int scorePlayer = 0;
+                int scoreCPU = 0;
 
                 while (scorePlayer < 3 && scoreCPU < 3)
                 {
