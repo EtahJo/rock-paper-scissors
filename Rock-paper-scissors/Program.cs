@@ -15,75 +15,116 @@ namespace ROCKPAPERSCISSORS
             int randomInt;
             int scorePlayer = 0;
             int scoreCPU = 0;
-
-            Console.Write("Choose between ROCK,PAPER,SCISSORS:   ");
-            inputPlayer = Console.ReadLine();
+            bool playAgain = true;
 
 
-            Random rnd = new Random();
-
-            randomInt = rnd.Next(1, 4);
-
-            switch (randomInt)
+            while (playAgain)
             {
-                case 1:
-                    inputCPU = "ROCK";
-                    Console.WriteLine("Computer chose ROCK");
-                    if(inputCPU.Equals(inputPlayer,StringComparison.OrdinalIgnoreCase))
+
+                while (scorePlayer < 3 && scoreCPU < 3)
+                {
+                    Console.Write("Choose between ROCK,PAPER,SCISSORS:   ");
+                    inputPlayer = Console.ReadLine();
+
+
+                    Random rnd = new Random();
+
+                    randomInt = rnd.Next(1, 4);
+
+                    switch (randomInt)
                     {
-                        Console.WriteLine("DRAW!!\n\n");
-                    }else if(inputPlayer.Equals("PAPER",StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.WriteLine("PLAYER WINS!!\n\n");
-                        scorePlayer++;
+                        case 1:
+                            inputCPU = "ROCK";
+                            Console.WriteLine("Computer chose ROCK");
+                            if (inputCPU.Equals(inputPlayer, StringComparison.OrdinalIgnoreCase))
+                            {
+                                Console.WriteLine("DRAW!!\n\n CPU score :{0},  Player score :{1}", scoreCPU, scorePlayer);
+                            }
+                            else if (inputPlayer.Equals("PAPER", StringComparison.OrdinalIgnoreCase))
+                            {
+                                Console.WriteLine("PLAYER WINS!!\n\n");
+                                scorePlayer++;
+                                Console.WriteLine("Player Score:{0}, CPU Score :{1}", scorePlayer, scoreCPU);
+
+                            }
+                            else if (inputPlayer.Equals("SCISSORS", StringComparison.OrdinalIgnoreCase))
+                            {
+                                Console.WriteLine("CPU WINS !! \n\n");
+                                scoreCPU++;
+                                Console.WriteLine("Player Score:{0}, CPU Score :{1}", scorePlayer, scoreCPU);
+                            }
+                            break;
+                        case 2:
+                            inputCPU = "PAPER";
+                            Console.WriteLine("Computer chose PAPER");
+                            if (inputCPU.Equals(inputPlayer, StringComparison.OrdinalIgnoreCase))
+                            {
+                                Console.WriteLine("DRAW!!\n\n CPU score :{0},  Player score :{1}", scoreCPU, scorePlayer);
+                            }
+                            else if (inputPlayer.Equals("ROCK", StringComparison.OrdinalIgnoreCase))
+                            {
+                                Console.WriteLine("CPU WINS!!\n\n");
+                                scoreCPU++;
+                                Console.WriteLine("Player Score:{0}, CPU Score :{1}", scorePlayer, scoreCPU);
+                            }
+                            else if (inputPlayer.Equals("SCISSORS", StringComparison.OrdinalIgnoreCase))
+                            {
+                                Console.WriteLine("PLAYER WINS !! \n\n");
+                                scorePlayer++;
+                                Console.WriteLine("Player Score:{0}, CPU Score :{1}", scorePlayer, scoreCPU);
+                            }
+                            break;
+                        case 3:
+                            inputCPU = "SCISSORS";
+                            Console.WriteLine("Computer chose SCISSORS");
+                            if (inputCPU.Equals(inputPlayer, StringComparison.OrdinalIgnoreCase))
+                            {
+                                Console.WriteLine("DRAW!!\n\n CPU score :{0},  Player score :{1}", scoreCPU, scorePlayer);
+                            }
+                            else if (inputPlayer.Equals("ROCK", StringComparison.OrdinalIgnoreCase))
+                            {
+                                Console.WriteLine("PLAYER WINS!!\n\n");
+                                scorePlayer++;
+                                Console.WriteLine("Player Score:{0}, CPU Score :{1}", scorePlayer, scoreCPU);
+                            }
+                            else if (inputPlayer.Equals("PAPER", StringComparison.OrdinalIgnoreCase))
+                            {
+                                Console.WriteLine("CPU WINS !! \n\n");
+                                scoreCPU++;
+                                Console.WriteLine("Player Score:{0}, CPU Score :{1}", scorePlayer, scoreCPU);
+                            }
+                            break;
+                        default:
+                            Console.WriteLine("Invalid entry");
+                            break;
+
                     }
-                    else if (inputPlayer.Equals("SCISSORS", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.WriteLine("CPU WINS !! \n\n");
-                        scoreCPU++;
-                    }
-                    break;
-                case 2:
-                    inputCPU = "PAPER";
-                    Console.WriteLine("Computer chose PAPER");
-                    if (inputCPU.Equals(inputPlayer, StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.WriteLine("DRAW!!\n\n");
-                    }
-                    else if (inputPlayer.Equals("ROCK", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.WriteLine("CPU WINS!!\n\n");
-                        scoreCPU++;
-                    }
-                    else if (inputPlayer.Equals("SCISSORS", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.WriteLine("PLAYER WINS !! \n\n");
-                        scorePlayer++;
-                    }
-                    break;
-                case 3:
-                    inputCPU = "SCISSORS";
-                    Console.WriteLine("Computer chose SCISSORS");
-                    if (inputCPU.Equals(inputPlayer, StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.WriteLine("DRAW!!\n\n");
-                    }
-                    else if (inputPlayer.Equals("ROCK", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.WriteLine("PLAYER WINS!!\n\n");
-                        scorePlayer++;
-                    }
-                    else if (inputPlayer.Equals("PAPER", StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.WriteLine("CPU WINS !! \n\n");
-                        scoreCPU++;
-                    }
-                    break;
-                default:
-                    Console.WriteLine("Invalid entry");
-                    break;
+
+
+                }
+                if (scorePlayer == 3)
+                {
+                    Console.WriteLine("Player WINS !!");
+                }
+                else
+                {
+                    Console.WriteLine("CPU WINS !!");
+                }
+                Console.Write("Do you want to play again?(y/n)");
+                string loop = Console.ReadLine();
+                if (loop == "y")
+                {
+                    playAgain = true;
+                }
+                else if (loop == "n")
+                {
+                    playAgain = false;
+                }
             }
-             
+
+
+            
+
         }
     }
 }
